@@ -7,17 +7,19 @@ class ResultsPage extends StatelessWidget {
   static const routeName = '/result';
 
   ResultsPage();
-  
+
+
+
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context).settings.arguments as CalculatorBrain;
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as CalculatorBrain;
 
     final result = routeArgs.calculateBMI();
     final resultText = routeArgs.getResult();
     final resultDesc = routeArgs.getInterpretaion();
+    final weightColor = routeArgs.getWeightolor();
 
-
-    
     return Scaffold(
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
@@ -51,7 +53,11 @@ class ResultsPage extends StatelessWidget {
                 children: [
                   Text(
                     resultText,
-                    style: kResultTitle,
+                    style: TextStyle(
+                      color: weightColor,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     result,

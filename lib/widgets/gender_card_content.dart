@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../constants.dart';
 
@@ -11,6 +12,8 @@ class GenderCardContent extends StatelessWidget {
     @required this.label,
   });
 
+
+  
   @override
   Widget build(BuildContext context) {
     return Column(

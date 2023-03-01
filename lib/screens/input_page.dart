@@ -39,15 +39,33 @@ class _InputPageState extends State<InputPage> {
   }
 
   void weightHander(Operator operator) {
-    setState(() {
-      operator == Operator.add ? weight++ : weight--;
-    });
+    if (operator == Operator.add && weight <= 635) {
+      setState(() {
+         weight++;
+      });
+    }else if(weight != 1){
+      setState(() {
+        weight --;
+      });
+    }else{
+      return;
+    }
   }
 
   void ageHander(Operator operator) {
-    setState(() {
-      operator == Operator.add ? age++ : age--;
-    });
+    if (operator == Operator.add){
+      setState(() {
+        age ++;
+      });
+    }else if (age !=0){
+      setState(() {
+        age --;
+      });
+      
+    }else {
+      return;
+    }
+    
   }
 
   @override
@@ -222,8 +240,10 @@ class _InputPageState extends State<InputPage> {
             child: BottomButton(
                 buttonText: 'CALCULATE',
                 onTap: () {
-                  CalculatorBrain calc = CalculatorBrain(height: height.toInt(), weight: weight.toInt());
-                  Navigator.pushNamed(context, ResultsPage.routeName,arguments: calc);
+                  CalculatorBrain calc = CalculatorBrain(
+                      height: height.toInt(), weight: weight.toInt());
+                  Navigator.pushNamed(context, ResultsPage.routeName,
+                      arguments: calc);
                 }),
           ),
         ],
